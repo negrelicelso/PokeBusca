@@ -16,5 +16,8 @@ namespace PokeBusca.Models
 
         [DisplayName("Nome")]
         public string name { get; set; }
+
+        [DisplayName("Sprite Frontal Padrão")]
+        public string front_default { get; set; }
     }
 }

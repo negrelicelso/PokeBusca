@@ -8,7 +8,7 @@ namespace PokeBusca
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new PokemonView());
+            Application.Run(new InicioView());
         }
     }
 }

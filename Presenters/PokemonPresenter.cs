@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 using PokeBusca.Models;
@@ -35,15 +36,22 @@ namespace PokeBusca.Presenters
                 resposta.EnsureSuccessStatusCode(); 
 
                 // Lê o JSON como string
-                string respostaJson = await resposta.Content.ReadAsStringAsync();
-
+                
+                string json = await resposta.Content.ReadAsStringAsync();
+                JsonNode jsonSeparado = JsonNode.Parse(json);
+                /*
                 var opcoes = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true, // Ignora maiúsculas/minúsculas
-                    WriteIndented = true // Habilita indentação
                 };
 
                 PokemonModel Pokemon = JsonSerializer.Deserialize<PokemonModel>(respostaJson, opcoes);
+                */
+                PokemonModel Pokemon = new PokemonModel();
+
+                Pokemon.id = ((int)jsonSeparado["id"]);
+                Pokemon.name = jsonSeparado["name"].ToString();
+                Pokemon.front_default = jsonSeparado["sprites"]?["front_default"]?.ToString();
 
                 return Pokemon;
             }
