@@ -1,0 +1,40 @@
+﻿@page "/pokemon"
+@rendermode InteractiveServer
+
+<PageTitle>Busca de Pokémon</PageTitle>
+
+<h1>Busca de Pokémon</h1>
+
+<p>Digite o código ou o nome do pokémon abaixo</p>
+<input id="inputPokemon" type="text" @bind="inputP"/>
+
+<button class="btn btn-primary" @onclick="@(e=> BuscarPokemon(inputP))">Buscar</button>
+<br />
+<br />
+<p>@PokemonRetornado.name</p>
+<div>
+    <img src="@PokemonRetornado.front_default" />
+    <img src="@PokemonRetornado.back_default" />
+</div>
+<div>
+    <img src="@PokemonRetornado.front_shiny" />
+    <img src="@PokemonRetornado.back_shiny" />
+</div>
+
+
+@code {
+    private PokemonController controller;
+
+    public Pokemon()
+    {
+        controller = new PokemonController();
+    }
+
+    string inputP = "";
+    PokemonModel PokemonRetornado = new PokemonModel();
+
+    public async Task BuscarPokemon(string input)
+    {
+        PokemonRetornado = await controller.BuscarPokemon(input);
+    }
+}
