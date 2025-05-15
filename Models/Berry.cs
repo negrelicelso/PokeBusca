@@ -2,11 +2,6 @@
 
 namespace PokeBusca.Models
 {
-    /*
-     * Descrição:
-     * Berries são pequenas frutas que provem HP e curam condições de status (Envenenamento, Congelamento, etc),
-     * Melhorias de status e até mesmo negação de dano quando consumida por um Pokémon.
-     */
     public class Berry : NamedApiResource<Berry>
     {
         internal new static string ApiEndpoint { get; } = "berry";
@@ -126,7 +121,7 @@ namespace PokeBusca.Models
          * Descrição:
          * O nome desse registro em idiomas diferentes.
          */
-        public List<Names> Names { get; set; }
+        public List<Names> names { get; set; }
     }
 
     public class BerryFlavorMap
@@ -191,6 +186,6 @@ namespace PokeBusca.Models
          * Descrição:
          * O nome desse registro em idiomas diferentes.
          */
-        public List<Names> Names { get; set; }
+        public List<Names> names { get; set; }
     }
 }
