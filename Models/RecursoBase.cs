@@ -1,4 +1,6 @@
-﻿namespace PokeBusca.Models
+﻿using System.Collections.Generic;
+
+namespace PokeBusca.Models
 {
     /*
      * Descrição:

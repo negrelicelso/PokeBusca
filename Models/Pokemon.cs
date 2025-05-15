@@ -2,7 +2,7 @@
 
 namespace PokeBusca.Models
 {
-    public class PokemonModel
+    public class Pokemon
     {
         [DisplayName("Número")]
         public int id { get; set; }

@@ -13,7 +13,7 @@ namespace PokeBusca.Controllers
             BaseAddress = new Uri("https://pokeapi.co"),
         };
 
-        public async Task<PokemonModel> BuscarPokemon(string inputPokemon)
+        public async Task<Pokemon> BuscarPokemon(string inputPokemon)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace PokeBusca.Controllers
                 string json = await resposta.Content.ReadAsStringAsync();
                 JsonNode jsonSeparado = JsonNode.Parse(json);
 
-                PokemonModel Pokemon = new PokemonModel();
+                Pokemon Pokemon = new Pokemon();
 
                 Pokemon.id = ((int)jsonSeparado["id"]);
                 Pokemon.name = MetodosUteis.PrimeiraMaiuscula(jsonSeparado["name"].ToString());
