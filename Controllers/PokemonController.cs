@@ -1,4 +1,5 @@
 ﻿using PokeBusca.Models;
+using PokeBusca.Utils;
 using System.Text.Json.Nodes;
 
 namespace PokeBusca.Controllers
@@ -25,18 +26,11 @@ namespace PokeBusca.Controllers
 
                 string json = await resposta.Content.ReadAsStringAsync();
                 JsonNode jsonSeparado = JsonNode.Parse(json);
-                /*
-                var opcoes = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true, // Ignora maiúsculas/minúsculas
-                    };
 
-                PokemonModel Pokemon = JsonSerializer.Deserialize<PokemonModel>(respostaJson, opcoes);
-                */
                 PokemonModel Pokemon = new PokemonModel();
 
                 Pokemon.id = ((int)jsonSeparado["id"]);
-                Pokemon.name = jsonSeparado["name"].ToString();
+                Pokemon.name = MetodosUteis.PrimeiraMaiuscula(jsonSeparado["name"].ToString());
                 Pokemon.front_default = jsonSeparado["sprites"]?["front_default"]?.ToString();
                 Pokemon.back_default = jsonSeparado["sprites"]?["back_default"]?.ToString();
                 Pokemon.front_shiny = jsonSeparado["sprites"]?["front_shiny"]?.ToString();
