@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace PokeBusca.Models
+namespace PokeBusca
 {
     /*
      * Descrição:
      * A classe base para todos os recursos que são listas
      */
-    public abstract class RecursoLista<T> where T : RecursoBase
+    public abstract class ResourceList<T> where T : ResourceBase
     { 
         /*
          * Descrição:
@@ -31,25 +31,25 @@ namespace PokeBusca.Models
      * Descrição:
      * Um objeto de paginação para recursos não nomeados.
      */
-    public class Lista<T> : RecursoLista<T> where T : Recurso
+    public class ApiResourceList<T> : ResourceList<T> where T : ApiResource<T>
     {
         /*
          * Descrição:
          * Uma lista dos recursos não nomeados.
          */
-        public List<Recurso/*<T>*/> results { get; set; }
+        public List<ApiResource<T>> results { get; set; }
     }
 
     /*
      * Descrição:
      * Um objeto de paginação para recursos nomeados.
      */
-    public class ListaNomeada<T> : RecursoLista<T> where T : RecursoNomeado
+    public class NamedApiResourceList<T> : ResourceList<T> where T : NamedApiResource<T>
     {
         /*
          * Descrição:
          * Uma lista dos recursos nomeados.
          */
-        public List<RecursoNomeado/*<T>*/> results { get; set; }
+        public List<NamedApiResource<T>> results { get; set; }
     }
 }

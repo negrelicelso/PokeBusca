@@ -1,11 +1,13 @@
-﻿namespace PokeBusca.Models
+﻿using System.Collections.Generic;
+
+namespace PokeBusca.Models
 {
     /*
      * Descrição:
      * Berries são pequenas frutas que provem HP e curam condições de status (Envenenamento, Congelamento, etc),
      * Melhorias de status e até mesmo negação de dano quando consumida por um Pokémon.
      */
-    public class Berry : RecursoNomeado
+    public class Berry : NamedApiResource<Berry>
     {
         internal new static string ApiEndpoint { get; } = "berry";
 
@@ -69,14 +71,36 @@
 
         /*
          * Descrição:
-         * Campo 'smoothness' do registro.
+         * Campo 'firmness' do registro.
          * O quanto uma berry é firme. 
          * Usado para fazer Pokéblocks ou Poffins.
          */
-        public RecursoNomeado<BerryFirmness> firmness { get; set; }
+        public NamedApiResource<BerryFirmness> firmness { get; set; }
+
+        /*
+        * Descrição:
+        * Campo 'flavors' do registro.
+        * Uma lista de referência para cada sabor que uma berry pode ter e a potência que cada sabor para a berry.
+        */
+        public List<BerryFlavorMap> flavors { get; set; }
+
+        /*
+         * Descrição:
+         * Campo 'item' do registro.
+         * Berries são itens, essa é a referencia para o dado do item especifico para essa berry.
+         */
+        public NamedApiResource<Item> item { get; set; }
+
+        /*
+         * Descrição:
+         * Campo 'natural_gift_type' do registro.
+         * O tipo herdado do 'Natural Gift' quando usado com essa berry;
+         */
+        public NamedApiResource<Tipo> natural_gift_type { get; set; }
+
     }
 
-    public class BerryFirmness : RecursoNomeado
+    public class BerryFirmness : NamedApiResource<BerryFirmness>
     {
         internal new static string ApiEndpoint { get; } = "berry-firmness";
 
@@ -96,7 +120,72 @@
          * Descrição:
          * Lista de berries com a firmeza.
          */
-        public List<RecursoNomeado<Berry>> berries { get; set; }
+        public List<NamedApiResourceList<Berry>> berries { get; set; }
+
+        /*
+         * Descrição:
+         * O nome desse registro em idiomas diferentes.
+         */
+        public List<Names> Names { get; set; }
+    }
+
+    public class BerryFlavorMap
+    {
+        /*
+         * Descrição:
+         * O quão forte é o sabor referenciado para essa berry.
+         */
+        public int potency { get; set; }
+
+        /*
+         * Descrição:
+         * O sabor referenciado da berry.
+         */
+        public NamedApiResource<BerryFlavor> flavor { get; set; }
+    }
+
+    public class FlavorBerryMap
+    {
+        /*
+         * Descrição:
+         * O quão forte é o sabor referenciado para essa berry.
+         */
+        public int potency { get; set; }
+
+        /*
+         * Descrição:
+         * A berry referenciada para o sabor.
+         */
+        public NamedApiResource<Berry> berry { get; set; }
+    }
+
+    public class BerryFlavor : NamedApiResource<BerryFlavor>
+    {
+        internal new static string ApiEndpoint { get; } = "berry-firmness";
+
+        /* 
+         * Descrição:
+         * Campo 'id' do registro. 
+         */
+        public override int id { get; set; }
+
+        /* 
+         * Descrição:
+         * Campo 'name' do registro. 
+         */
+        public override string name { get; set; }
+
+        /*
+         * Descrição:
+         * Uma lista com as berries com esse sabor.
+         */
+        public List<FlavorBerryMap> berries { get; set; }
+
+        /*
+         * Descrição:
+         * O tipo de Contest que se correlaciona com esse sabor.
+         */
+        public NamedApiResource<ContestType> contest_type { get; set; }
 
         /*
          * Descrição:

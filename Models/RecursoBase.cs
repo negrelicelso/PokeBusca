@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace PokeBusca.Models
+﻿namespace PokeBusca
 {
     /*
      * Descrição:
      * A classe base para as classes que tem um Endpoint definido na API.
      */
-    public abstract class RecursoBase
+    public abstract class ResourceBase
     {
         /*
          * Descrição:
@@ -31,8 +29,11 @@ namespace PokeBusca.Models
      * Descrição:
      * A classe base para os recursos que tem um nome.
      */
-    public abstract class RecursoNomeado : RecursoBase
+    public abstract class NamedApiResource<T> : ResourceBase
     {
+
+        public T attributes { get; set; }
+
         /* 
          * Descrição:
          * Campo 'name' do registro. 
@@ -44,7 +45,8 @@ namespace PokeBusca.Models
      * Descrição:
      * A classe base para os recursos que não tem um nome.
      */
-    public abstract class Recurso : RecursoBase
+    public abstract class ApiResource<T> : ResourceBase
     {
+        public T attributes { get; set; }
     }
 }
