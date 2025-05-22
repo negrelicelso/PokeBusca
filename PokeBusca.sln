@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeBusca", "PokeBusca.csproj", "{546D46BB-4C7D-4CDA-87FE-87D9AD6F7386}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{546D46BB-4C7D-4CDA-87FE-87D9AD6F7386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546D46BB-4C7D-4CDA-87FE-87D9AD6F7386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546D46BB-4C7D-4CDA-87FE-87D9AD6F7386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546D46BB-4C7D-4CDA-87FE-87D9AD6F7386}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AE2EBFE-2FB5-4B73-A70F-878A77C0F983}
+	EndGlobalSection
+EndGlobal
